@@ -1,0 +1,36 @@
+<ul>
+{% for formation in formations %}
+    <li class="btn btn-default"><a data-toggle="modal" href="#formation_{{formation.id}}">{{formation.titre}}
+        </a></li>
+    <div class="modal fade" data-backdrop="static" id="formation_{{formation.id}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title">
+            {{formation.titre}} 
+            - {{formation.etablissement}}
+            à {{formation.ville}} 
+            de {{formation.dateDebut|date('m/Y')}} 
+            à {{formation.dateFin|date('m/Y')}}
+        </h4>
+      </div>
+      <div class="modal-body">
+            Diplôme obtenu : 
+            {% if formation.diplomeObtenu %}
+            oui
+            {%else%}
+            non
+            {%endif%}
+            <hr>
+            <sous-titre>Connaissances aquises:</sous-titre>
+        {{formation.programme|nl2br}}
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor%}
+</ul>

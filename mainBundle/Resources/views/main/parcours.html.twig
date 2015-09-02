@@ -1,0 +1,73 @@
+{% extends "mainBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent()}} - Mon parcours professionnel 
+    {% endblock %}
+    
+    {% block body %}
+        <div class="container">
+  <div id="monaccordeon" class="panel-group col-lg-12">
+    <h3> Mon parcours professionnel</h3>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+            <a href="#item1" data-parent="#monaccordeon" data-toggle="collapse"> Expériences professionnelles <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item1" class="panel-collapse collapse in">
+          <div class="panel-body"> {% render(path('experiences')) %}</div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+          <a href="#item2" data-parent="#monaccordeon" data-toggle="collapse">  Formation initiale <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item2" class="panel-collapse collapse">
+        <div class="panel-body"> {% render(path('formation')) %} </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+          <a href="#item3" data-parent="#monaccordeon" data-toggle="collapse">  Certificats <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item3" class="panel-collapse collapse">
+        <div class="panel-body"> {% render(path('certificats')) %} </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+          <a href="#item4" data-parent="#monaccordeon" data-toggle="collapse">  Logiciels <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item4" class="panel-collapse collapse">
+        <div class="panel-body"> {% render(path('aptitudes',{'type':'logiciel'})) %} </div>
+      </div>
+    </div>
+    <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+          <a href="#item5" data-parent="#monaccordeon" data-toggle="collapse">  Langages informatiques <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item5" class="panel-collapse collapse">
+        <div class="panel-body"> {% render(path('aptitudes',{'type':'langage'})) %} </div>
+      </div>
+    </div>
+      <div class="panel panel-default">
+      <div class="panel-heading"> 
+        <h3 class="panel-title">
+          <a href="#item6" data-parent="#monaccordeon" data-toggle="collapse">  Langues <span class="glyphicon glyphicon-chevron-down" style="font-size: 10px;"></span></a> 
+        </h3>
+      </div>
+      <div id="item6" class="panel-collapse collapse">
+        <div class="panel-body"> {% render(path('aptitudes',{'type':'langue'})) %} </div>
+      </div>
+    </div>
+  </div>
+</div>
+        {% endblock %}

@@ -1,0 +1,33 @@
+<ul>
+{% for exp in listeExp %}
+    <li><a data-toggle="modal" href="#exp_{{exp.id}}"><strong>{{exp.titre}}</strong> - <i>{{ exp.entreprise }}</i></a></li>
+    <div class="modal fade" data-backdrop="static" id="exp_{{exp.id}}">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title">
+            {{exp.titre}} 
+            - {{exp.entreprise}} 
+            à {{exp.lieu}}
+            de {{exp.dateDebut|date('m/Y')}} 
+            à {{exp.dateFin|date('m/Y')}}
+        </h4>
+      </div>
+      <div class="modal-body">
+          <sous-titre>Responsabilités:</sous-titre>
+          <contenu>{{exp.responsabilites|nl2br}}</contenu>
+          {% if exp.competences %}
+          <hr>
+          <sous-titre>Compétences requises:</sous-titre>
+          <contenu>{{exp.competences|nl2br}}</contenu>
+          {% endif %}
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+    {% endfor%}
+</ul>

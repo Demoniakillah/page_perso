@@ -1,0 +1,41 @@
+    {% block style %}
+<style>
+   
+    .modal-dialog{
+        width: 80%;
+        min-height: 1280px;
+    }
+    </style>
+    {%endblock%}
+
+    {%for certificat in certificats%}
+        <li class="btn btn-default"><a data-toggle="modal" href="#certificat_{{certificat.id}}" >"{{certificat.titre}}"</a></li>
+    <div class="modal fade" data-backdrop="static" id="certificat_{{certificat.id}}">
+        <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal">x</button>
+        <h4 class="modal-title">{{certificat.titre}} obetnu le {{certificat.dateObtention|date('d/m/Y')}}</h4>
+      </div>
+      <div class="modal-body">
+          <sous-titre>Programme:</sous-titre>
+          {{certificat.programme|nl2br}}
+        <hr>
+        <a class="btn btn-primary" href="{{asset('certificats/'~certificat.url)}}" target="_blank">Afficher le certificat</a>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-info" data-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+    {%endfor%}
+
+{%block script %}
+    <script type="text/javascript"> 
+PDF.SetShowToolBar("true"); //--- barre d'outils true(visible) false(non visible) ---// 
+PDF.SetShowScrollbar("true"); //--- barre de scroll true(visible) false(non visible) ---// 
+PDF.SetPageMode("none"); //--- cache les signets ---// 
+PDF.setZoom(100%); //--- Zoom le document à 80% ---// 
+</script>
+{% endblock %}

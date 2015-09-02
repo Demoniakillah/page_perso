@@ -1,0 +1,55 @@
+{% extends "mainBundle::layout.html.twig" %}
+
+{% block title %}
+    {{ parent()}} - Contact
+    {% endblock %}
+    
+    {% block body %}
+        
+        {% for flashMessage in app.session.flashbag.get('notice') %}
+            <div class="btn btn-success row" style="width: 100%; margin-bottom: 30px; white-space: normal;">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        {% for flashMessage in app.session.flashbag.get('alert') %}
+            <div class="btn btn-danger row" style="width: 100%; margin-bottom: 30px; white-space: normal;">
+                {{ flashMessage }}
+            </div>
+        {% endfor %}
+        
+        <div class="col-sm-3">
+            <span class="glyphicon glyphicon-user"></span> Roy-Glen RAYMOND - 27 ans<br>
+            <span class="glyphicon glyphicon-map-marker"></span> Toulon (83200)<br>
+            <span class="glyphicon glyphicon-envelope"></span> <a href="mailto:raymond.royglen@gmail.com">raymond.royglen@gmail.com </a><br>
+            <span class="glyphicon glyphicon-phone"></span> 0664.88.04.82
+        </div> 
+        <div class="col-sm-7 col-sm-offset-2" id="formulaire">
+                {{ form_start(form, {'attr': {'class': 'form-horizontal'}}) }}
+                <fieldset>
+                    <div class="control-group">
+                        <div class="controls">
+                            {{ form_widget(form.email,{'attr':{'class':'input-medium','placeholder':'Votre adresse e-mail'}}) }}
+                            <error class="row">
+                                <div {{form_errors(form.email)}}</div>
+                            </error>
+                        </div>
+                    </div>
+                            <div class="control-group" style="margin-left: 15px;">
+                        <div class="controls">
+                            {{ form_label(form.message,'Votre message')}}
+                            <error class="row">
+                                {{form_errors(form.message)}}
+                            </error>
+                            {{ form_widget(form.message) }}
+                        </div>
+                    </div>
+                    <div class="control-group">
+                        <div class="controls">
+                            {{ form_widget(form.envoyer, {'attr': {'class': 'btn btn-primary'}}) }}
+                        </div>
+                    </div>
+                </fieldset>
+                {{ form_rest(form) }}
+                {{ form_end(form) }}
+        </div>
+        {% endblock %}

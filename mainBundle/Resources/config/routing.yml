@@ -1,0 +1,31 @@
+main_homepage:
+    path:     /
+    defaults: { _controller: mainBundle:main:index }
+
+parcours:
+    path:     /parcours
+    defaults: { _controller: mainBundle:main:parcours }
+    
+experiences:
+    path:     /experiences
+    defaults: { _controller: mainBundle:main:experiences }
+
+certificats:
+    path:     /certificats
+    defaults: { _controller: mainBundle:main:certificats }
+    
+formation:
+    path:     /formation
+    defaults: { _controller: mainBundle:main:formation }
+    
+aptitudes:
+    path:     /aptitudes/{type}
+    defaults: { _controller: mainBundle:main:aptitudes }
+
+contact:
+    path:     /contact
+    defaults: { _controller: mainBundle:main:contact }
+    
+ok:
+    path:     /ok
+    defaults: { _controller: mainBundle:main:ok }

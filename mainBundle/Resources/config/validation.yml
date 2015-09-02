@@ -1,0 +1,11 @@
+mainBundle\Entity\contact:
+    properties:
+        email:
+            - Email:
+                message: "'{{ value }}' n'est pas un email valide."
+                checkMX: true
+                checkHost: true
+        message:
+            - Length:
+                min: 10
+                minMessage: "Cette zone doit contenir au moins {{ limit }} caractères"
